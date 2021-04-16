@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
-import './App.css';
+import './styles/App.css';
+import Heading from './Heading';
 import ListItem from './ListItem';
+import Tab from './Tab';
 
 class App extends Component {
 
@@ -11,13 +13,16 @@ class App extends Component {
        items:[],
        currentItem:{
          text:"",
-         key:""
+         key:"",
+         checked:false
        }
     }
     this.handleInput = this.handleInput.bind(this);// binding explicitly 
     this.addItem = this.addItem.bind(this);
     this.deleteItem = this.deleteItem.bind(this);
     this.setUpdate = this.setUpdate.bind(this);
+    this.addToCompletedTask = this.addToCompletedTask.bind(this);
+    this.showCompletedTask = this.showCompletedTask.bind(this);
   }
 
 
@@ -25,7 +30,9 @@ class App extends Component {
     this.setState({
       currentItem:{
         text:e.target.value,
-        key:Date.now()
+        key:Date.now(),
+        checked:false
+
       }
 
     })
@@ -51,6 +58,7 @@ class App extends Component {
 
   }
 
+
   deleteItem(key){
     // const filteredItems = this.state.items.filter((item)=>{return item.key!==key});
     const filteredItems = this.state.items.filter(item=>item.key!==key);
@@ -74,11 +82,40 @@ class App extends Component {
     })
 
   }
+
+  addToCompletedTask(id){
+    const items = this.state.items;
+    // console.log(items)
+    items.map((item)=>{
+      if(item.key == id){
+        // console.log(item.checked)
+        item.checked = !item.checked
+      console.log(item.text);        
+    // console.log(item.checked)
+      }
+    })
+    this.setState({
+      items:items
+    })
+      
+
+  }
+
+  showCompletedTask(){
+    const filteredItems = this.state.items.filter(item=>item.checked ===true);
+
+    this.setState({
+      items:filteredItems
+    })
+      
+  }
+
+ 
   
   render() {
     return (
       <div className="App">
-        <header>
+        <Heading/>
           <form id="todo_form" onSubmit={this.addItem}>
             <input 
             type="text" 
@@ -89,13 +126,13 @@ class App extends Component {
             <button className="todo" type="submit">Add</button>
 
           </form>
-        </header>
+          <Tab showCompletedTask = {this.showCompletedTask}/>
         <ListItem 
         items = {this.state.items} 
         deleteItem = {this.deleteItem}
         setUpdate = {this.setUpdate}
+        addToCompletedTask = {this.addToCompletedTask}
         />
-
         
       </div>
     )

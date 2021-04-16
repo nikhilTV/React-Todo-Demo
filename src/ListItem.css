@@ -1,10 +1,14 @@
 .list{
     color: #fff;
-    width: 300px;
-    margin: 20px auto;
+    /* width: 300px; */
+    width: 85%;
+    /* margin: 20px auto; */
+    margin: 20px 35px;
     height: 50px;
-    background-color: #bf07ac;
+    /* background-color: #bf07ac; */
+    background-color: lightgray;
     border-radius: 5px;
+    opacity: .8; /* to make it light color*/
 }
 
 .list > p{
@@ -15,7 +19,8 @@
 .list p input{
     background-color: transparent;
     border: 0;
-    color: #fff;
+    /* color: #fff; */
+    color: black;
     font-size: 18px;
 }
 

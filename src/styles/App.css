@@ -1,0 +1,62 @@
+body{
+  /* background-color: #9266ff; */
+  /* background-color: #EEF2F7; */
+  background-color: #fff;
+}
+
+.App{
+  /* background-color: #3f3160; */
+  /* overflow-y: scroll; */
+  /* overflow-x: hidden; */
+  overflow:auto scroll;
+
+  /* height: 400vh; */
+  min-height: 500px;
+  width: 60%;
+  margin: 50px auto; /*top & bottom is 50px    left & right is auto . auto is used for align this item to horizontal-center*/
+  background-color: #0093E9;
+  background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+   
+
+}
+
+/* "#todo_form input" also equal to "#todo_form > input" */
+
+#todo_form input{
+  /* background-color: rgb(202, 233, 243); */
+  height: 50px;
+  width: 500px;
+  border:0;
+  /* margin:20px; */
+  margin:2px 20px;
+  padding: 0px 20px ;
+  color: #000;
+  font-size: 20px;
+  border-radius: 10px;
+}
+
+
+#todo_form input::placeholder{
+  /* color:rgba(255, 255, 255, 0.5) */
+  color:lightblue;
+
+}
+
+#todo_form input:focus, #todo_form button:focus{
+  outline: none;
+}
+
+
+#todo_form button{
+
+  height: 50px;
+  width: 80px;
+  /* background-color: rgb(202, 156, 24); */
+    background-color:lightblue;
+  color: blue;
+  border-radius: 5px;
+  border: 0;
+  cursor: pointer;
+  font-weight: bolder;
+
+}
