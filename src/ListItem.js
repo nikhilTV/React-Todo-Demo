@@ -29,8 +29,7 @@ function ListItem(props) {
             onChange={(e) => {
               props.setUpdate(e.target.value, item.key);
             }}
-            // style={item.checked ? { textDecoration: "line-through" } : {}}
-            style={item.checked && { textDecoration: "line-through" }}
+            style={item.checked ? { textDecoration: "line-through" } : {}}
           />
 
           <span>
