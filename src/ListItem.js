@@ -1,5 +1,7 @@
 import React from "react";
 import "./ListItem.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import FlipMove  from "react-flip-move";
 
 const styles = {
   done: {
@@ -37,19 +39,24 @@ function ListItem(props) {
           />
 
           <span>
-            <button
+            <FontAwesomeIcon
               className="Delete_ListItem"
               onClick={() => props.deleteItem(item.key)}
-            >
-              &times;
-            </button>
+              icon="trash"
+            />
           </span>
         </p>
       </div>
     );
   });
 
-  return <div className="ListItem_Scroll">{listItems}</div>;
+  return (
+  <div className="ListItem_Scroll">
+    {/* <FlipMove duration={500} easing="ease-in-out"> */}
+    {listItems}
+    {/* </FlipMove> */}
+    </div>
+    );
   // return <div>{listItems}</div>;
 }
 

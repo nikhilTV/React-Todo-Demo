@@ -48,6 +48,12 @@
     cursor: pointer;
     margin: 0 5px;
     font-size: 15px;
+    color: rgb(12, 184, 241);
+    opacity: .75;
+}
+
+.Delete_ListItem:hover{
+    color:red;
 }
 
 .ListItem_Input{

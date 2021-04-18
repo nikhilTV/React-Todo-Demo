@@ -25,7 +25,8 @@ body{
 #todo_form input{
   /* background-color: rgb(202, 233, 243); */
   height: 50px;
-  width: 500px;
+  /* width: 500px; */
+  width: 70%;
   border:0;
   /* margin:20px; */
   margin:2px 20px;

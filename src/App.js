@@ -3,6 +3,9 @@ import './styles/App.css';
 import Heading from './Heading';
 import ListItem from './ListItem';
 import Tab from './Tab';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faTrash,faCheckSquare } from '@fortawesome/free-solid-svg-icons';
+library.add(faTrash,faCheckSquare);
 
 class App extends Component {
 
