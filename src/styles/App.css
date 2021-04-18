@@ -57,6 +57,8 @@ body{
   border-radius: 5px;
   border: 0;
   cursor:pointer;
+  /* cursor:no-drop; */
+  /* cursor:not-allowed; */
   /* cursor:default; */
   font-weight: bolder;
 

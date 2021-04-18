@@ -22,9 +22,11 @@ function ListItem(props) {
               props.addToCompletedTask(e.target.id);
               // console.log(item.checked)
             }}
+            checked={item.checked ? 'checked' : ''}
           />
 
           <input
+            className="ListItem_Input"
             type="text"
             value={item.text}
             id={item.key}

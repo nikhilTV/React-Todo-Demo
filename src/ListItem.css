@@ -1,7 +1,10 @@
 .ListItem_Scroll{
-    overflow-y:scroll;
-    max-height: 370px;
+    /* overflow-y:scroll; */
+    /* overflow:auto auto;*/ /*over flow x is auto and y is auto */
+    /* Use overflow: auto. Scrollbars will only appear when needed. */
     /* min-height: 370px; */
+    overflow-y: auto;
+    max-height: 370px;
 }
 
 
@@ -45,4 +48,8 @@
     cursor: pointer;
     margin: 0 5px;
     font-size: 15px;
+}
+
+.ListItem_Input{
+    width: 85%;
 }

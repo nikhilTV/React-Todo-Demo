@@ -159,7 +159,8 @@ class App extends Component {
             onChange={this.handleInput}
             disabled={this.state.toggleActiveState !== 1 ? true : false}
             />
-            <button disabled={this.state.toggleActiveState !== 1 ? true : false} type="submit" >Add</button>
+            {/* <button type="button" disabled={this.state.toggleActiveState !== 1 ? true : false} >Add</button> */}
+            <button type="button" style={this.state.toggleActiveState !== 1 ?{disabled:true , cursor:"not-allowed"}: {}} >Add</button>
 
           </form>
           <Tab showTasks = {this.showTasks} activeState ={this.state.toggleActiveState} />
