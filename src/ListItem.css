@@ -1,3 +1,10 @@
+.ListItem_Scroll{
+    overflow-y:scroll;
+    max-height: 370px;
+    /* min-height: 370px; */
+}
+
+
 .list{
     color: #fff;
     /* width: 300px; */

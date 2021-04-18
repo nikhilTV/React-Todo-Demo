@@ -28,7 +28,8 @@
 }
 
 .Tab_Link > button:hover{
-    border-bottom: 3px solid red;
+    /* border-bottom: 3px solid red; */
+    color:rgba(10, 10, 10, 0.856);
 }
 
 .Tab_Link > button.active{

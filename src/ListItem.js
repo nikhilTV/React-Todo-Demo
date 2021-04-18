@@ -9,15 +9,17 @@ const styles = {
 
 function ListItem(props) {
   const items = props.items;
+  
   const listItems = items.map((item) => {
     return (
       <div className="list" key={item.key}>
         <p>
           <input
             type="checkbox"
-            value={item.key}
+            id={item.key}
             onClick={(e) => {
-              props.addToCompletedTask(e.target.value);
+              // console.log(e.target);
+              props.addToCompletedTask(e.target.id);
               // console.log(item.checked)
             }}
           />
@@ -45,7 +47,8 @@ function ListItem(props) {
     );
   });
 
-  return <div>{listItems}</div>;
+  return <div className="ListItem_Scroll">{listItems}</div>;
+  // return <div>{listItems}</div>;
 }
 
 export default ListItem;

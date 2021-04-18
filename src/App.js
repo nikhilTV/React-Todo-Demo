@@ -15,14 +15,16 @@ class App extends Component {
          text:"",
          key:"",
          checked:false
-       }
+       },
+       toggleActiveState:1,
+       taskWiseItem:[]
     }
     this.handleInput = this.handleInput.bind(this);// binding explicitly 
     this.addItem = this.addItem.bind(this);
     this.deleteItem = this.deleteItem.bind(this);
     this.setUpdate = this.setUpdate.bind(this);
     this.addToCompletedTask = this.addToCompletedTask.bind(this);
-    this.showCompletedTask = this.showCompletedTask.bind(this);
+    this.showTasks = this.showTasks.bind(this);
   }
 
 
@@ -62,9 +64,15 @@ class App extends Component {
   deleteItem(key){
     // const filteredItems = this.state.items.filter((item)=>{return item.key!==key});
     const filteredItems = this.state.items.filter(item=>item.key!==key);
+    const filteredTaskWiseItem = this.state.taskWiseItem.filter(item=>item.key!==key)
+    console.log("key",key);
+    // console.log("items delete section",items);
+    // const filteredItems = items.filter(item=>item.key!==key);
+    console.log("filteredItems",filteredItems);
 
     this.setState({
-      items:filteredItems
+      items:filteredItems,
+      taskWiseItem:filteredTaskWiseItem
     })
 
   }
@@ -90,7 +98,7 @@ class App extends Component {
       if(item.key == id){
         // console.log(item.checked)
         item.checked = !item.checked
-      console.log(item.text);        
+      // console.log(item.text);        
     // console.log(item.checked)
       }
     })
@@ -101,12 +109,39 @@ class App extends Component {
 
   }
 
-  showCompletedTask(){
-    const filteredItems = this.state.items.filter(item=>item.checked ===true);
+  showTasks(index){
+    console.log(index);
+    // const CompletedTasks = this.state.items.filter(item=>item.checked === true);
+    const AllTasks = this.state.items;
+    const ActiveTasks = this.state.items.filter(item=> !item.checked);
+    const CompletedTasks = this.state.items.filter(item=>item.checked);
+    
+    console.log("AllTasks",AllTasks);
+    console.log("ActiveTasks",ActiveTasks);
+    console.log("CompletedTasks",CompletedTasks);
 
     this.setState({
-      items:filteredItems
+      toggleActiveState:index
     })
+    
+    if(index === 2){
+      this.setState({
+        taskWiseItem:ActiveTasks
+      })
+    }else if(index === 3){
+
+      this.setState({
+        taskWiseItem:CompletedTasks
+      })
+      
+    }else{
+      this.setState({
+        taskWiseItem:AllTasks
+      })
+
+    }
+
+    
       
   }
 
@@ -122,13 +157,14 @@ class App extends Component {
             placeholder="Add Item"
             value={this.state.currentItem.text} 
             onChange={this.handleInput}
+            disabled={this.state.toggleActiveState !== 1 ? true : false}
             />
-            <button className="todo" type="submit">Add</button>
+            <button disabled={this.state.toggleActiveState !== 1 ? true : false} type="submit" >Add</button>
 
           </form>
-          <Tab showCompletedTask = {this.showCompletedTask}/>
+          <Tab showTasks = {this.showTasks} activeState ={this.state.toggleActiveState} />
         <ListItem 
-        items = {this.state.items} 
+        items = {this.state.toggleActiveState=== 1 ? this.state.items : this.state.taskWiseItem} 
         deleteItem = {this.deleteItem}
         setUpdate = {this.setUpdate}
         addToCompletedTask = {this.addToCompletedTask}
