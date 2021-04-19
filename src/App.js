@@ -4,8 +4,9 @@ import Heading from './Heading';
 import ListItem from './ListItem';
 import Tab from './Tab';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faTrash,faCheckSquare } from '@fortawesome/free-solid-svg-icons';
-library.add(faTrash,faCheckSquare);
+import { faTrash,faCheckSquare,faPlus } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+library.add(faTrash,faCheckSquare,faPlus);
 
 class App extends Component {
 
@@ -98,7 +99,7 @@ class App extends Component {
     const items = this.state.items;
     // console.log(items)
     items.map((item)=>{
-      if(item.key == id){
+      if(item.key === id){
         // console.log(item.checked)
         item.checked = !item.checked
       // console.log(item.text);        
@@ -161,10 +162,12 @@ class App extends Component {
             value={this.state.currentItem.text} 
             onChange={this.handleInput}
             disabled={this.state.toggleActiveState !== 1 ? true : false}
+            autoFocus 
             />
-            {/* <button type="button" disabled={this.state.toggleActiveState !== 1 ? true : false} >Add</button> */}
-            <button type="button" style={this.state.toggleActiveState !== 1 ?{disabled:true , cursor:"not-allowed"}: {}} >Add</button>
-
+            <button type="submit" style={this.state.toggleActiveState !== 1 ?{disabled:true , cursor:"not-allowed"}: {}} >
+              <FontAwesomeIcon icon="plus" />
+            </button>
+              
           </form>
           <Tab showTasks = {this.showTasks} activeState ={this.state.toggleActiveState} />
         <ListItem 
