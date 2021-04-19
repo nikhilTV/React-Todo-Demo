@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 import './styles/App.css';
-import Heading from './Heading';
-import ListItem from './ListItem';
-import Tab from './Tab';
+
+import Heading from './components/Todo/Heading/Heading';
+import ListItem from './components/Todo/List/ListItem';
+import Tab from './components/Todo/Tab/Tab';
+
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faTrash,faCheckSquare,faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 library.add(faTrash,faCheckSquare,faPlus);
 
 class App extends Component {

@@ -1,5 +1,6 @@
 import React from 'react'
-import './Heading.css'
+
+import '../../../styles/Todo/heading/Heading.css'  //C:\Users\PC\Desktop\todolist\src\styles\Todo\heading
 
 function Heading() {
     return (
