@@ -1,0 +1,37 @@
+/* html {
+    overflow-y:scroll;
+} */
+
+
+
+.Todo_Tab{
+    padding: 0px 20px; 
+    display: flex;
+    flex-direction: row;
+    /* justify-content:space-evenly; */
+}
+
+.Tab_Link{
+    color: white;
+    margin: 0px 20px;
+    list-style: none;
+}
+
+.Tab_Link > button{
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    color: white;
+}
+
+.Tab_Link > button:hover{
+    /* border-bottom: 3px solid red; */
+    color:rgba(10, 10, 10, 0.856);
+}
+
+.Tab_Link > button.active{
+    border-bottom: 3px solid red;
+}

@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import './styles/App.css';
+import '../styles/App.css';
 
-import Heading from './components/Todo/Heading/Heading';
-import ListItem from './components/Todo/List/ListItem';
-import Tab from './components/Todo/Tab/Tab';
+import Heading from './Todo/Heading/Heading';
+import ListItem from './Todo/List/ListItem';
+import Tab from './Todo/Tab/Tab';
+import RouterTab from './Todo/Router/RouterTab';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faTrash,faCheckSquare,faPlus } from '@fortawesome/free-solid-svg-icons';
@@ -157,6 +158,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <RouterTab/>
         <Heading/>
           <form id="todo_form" onSubmit={this.addItem}>
             <input 
