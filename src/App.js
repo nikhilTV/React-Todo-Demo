@@ -99,7 +99,7 @@ class App extends Component {
     const items = this.state.items;
     // console.log(items)
     items.map((item)=>{
-      if(item.key === id){
+      if(item.key == id){
         // console.log(item.checked)
         item.checked = !item.checked
       // console.log(item.text);        

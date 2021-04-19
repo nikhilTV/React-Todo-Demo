@@ -24,7 +24,9 @@ function ListItem(props) {
               props.addToCompletedTask(e.target.id);
               // console.log(item.checked)
             }}
-            checked={item.checked ? 'checked' : ''}
+            // checked={item.checked ? 'checked' : ''}// it showed an error so used "defaultChecked" property intead of checked
+
+            defaultChecked={item.checked ? 'checked' : ''}
           />
 
           <input
