@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
-import '../styles/App.css';
-
-import Heading from './Todo/Heading/Heading';
-import ListItem from './Todo/List/ListItem';
-import Tab from './Todo/Tab/Tab';
-import RouterTab from './Todo/Router/RouterTab';
+import '../../styles/App.css';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faTrash,faCheckSquare,faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Heading from './Heading/Heading';
+import Tab from './Tab/Tab';
+import ListItem from './List/ListItem';
+
 
 library.add(faTrash,faCheckSquare,faPlus);
 
@@ -53,7 +52,7 @@ class App extends Component {
   addItem(e){
     e.preventDefault();
     const newItem  = this.state.currentItem;
-    console.log(newItem);
+    // console.log(newItem);
 
     if(newItem.text !==""){
       const newItems = [...this.state.items,newItem];
@@ -153,12 +152,10 @@ class App extends Component {
       
   }
 
- 
   
   render() {
     return (
       <div className="App">
-        <RouterTab/>
         <Heading/>
           <form id="todo_form" onSubmit={this.addItem}>
             <input 

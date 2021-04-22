@@ -11,7 +11,7 @@ function RouterTab() {
           <nav>
             <ul className="Todo_Tab">
               <li className="Tab_Link">
-                <Link style={{textDecoration:"none"}} to="/todo">Todo</Link>
+                  <Link style={{textDecoration:"none"}} to="/todo">Todo</Link>
               </li>
               <li className="Tab_Link">
                 <Link style={{textDecoration:"none"}} to="/redux_todo">Redux Todo</Link>
