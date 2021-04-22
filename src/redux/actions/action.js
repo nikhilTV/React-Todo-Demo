@@ -17,9 +17,13 @@ export const handleInput = (inputValue)=>{
 
 }
 
-export const addItem = () => {
+export const addItem = (newItem) => {
+    // console.log("newItem - at action", newItem)
     return{
-        type: ADD_ITEM
+        type: ADD_ITEM,
+        payload:{
+            items : newItem
+        }
     }
 }
 

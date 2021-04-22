@@ -25,13 +25,34 @@ import {HANDLE_INPUT, ADD_ITEM, DELETE_ITEM, UPDATE_ITEM} from '../actions/actio
                         key:key,
                         checked:checked
                    },
-
-                   
-
                }
+            
+            case ADD_ITEM :
+                // const {items} = action.payload;
+                const item = action.payload.items;
+                return{
+                    ...state,
+                    // items:items,
+                    items:[...state.items,item],
+                    currentItem:{
+                        // ...state.currentItem,
+                        text:"",
+                        key:"",
+                        checked:""
 
-               default : 
-                    return state
+                    }
+
+                }
+
+                case DELETE_ITEM :
+                    return{
+                        ...state,
+
+                    }
+
+
+            default : 
+                return state
 
 
        }
