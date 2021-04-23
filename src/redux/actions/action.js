@@ -1,4 +1,4 @@
-import {HANDLE_INPUT, ADD_ITEM, DELETE_ITEM, UPDATE_ITEM,COMPLETED_TASK} from './actionType'
+import {HANDLE_INPUT, ADD_ITEM, DELETE_ITEM, UPDATE_ITEM,COMPLETED_TASK,TASKWISE_ITEM} from './actionType'
 
 
 
@@ -46,18 +46,21 @@ export const updateItem = (updatedItems) => {
 }
 
 
-export const addToCompletedTask = () => {
+export const completedTask = (completedItems) => {
     return{
         type: COMPLETED_TASK,
         payload:{
-            
+            items : completedItems
         }
     }
 }
 
 
-// export const showTasks = () => {
-//     return{
-//         type: HANDLE_INPUT
-//     }
-// }
+export const showTaskWiseItem = () => {
+    return{
+        type: TASKWISE_ITEM,
+        payload:{
+
+        }
+    }
+}

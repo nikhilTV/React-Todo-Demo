@@ -1,4 +1,4 @@
-import {HANDLE_INPUT, ADD_ITEM, DELETE_ITEM, UPDATE_ITEM} from '../actions/actionType'
+import {HANDLE_INPUT, ADD_ITEM, DELETE_ITEM, UPDATE_ITEM,COMPLETED_TASK,TASKWISE_ITEM} from '../actions/actionType'
 
     const initialState = {
       items:[],
@@ -59,6 +59,13 @@ import {HANDLE_INPUT, ADD_ITEM, DELETE_ITEM, UPDATE_ITEM} from '../actions/actio
                         ...state,
                         items:[...updatedItems] //to append each text or value to previous value
                     
+                    }
+
+                case COMPLETED_TASK : 
+                const completedItems = action.payload.items;
+                    return {
+                        ...state,
+                        items:completedItems
                     }
 
 

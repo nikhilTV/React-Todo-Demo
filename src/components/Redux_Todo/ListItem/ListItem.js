@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { deleteItem,updateItem } from  '../../../redux/actions/action'
+import { deleteItem,updateItem,completedTask } from  '../../../redux/actions/action'
 import "../../../styles/Todo/list/ListItem.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -25,6 +25,7 @@ export class ListItem extends Component {
                 <input
                   type="checkbox"
                   id={item.key}
+                  onChange={()=>{this.addToCompletedTask(item.key)}}
       
                   // defaultChecked={item.checked ? 'checked' : ''}
                 />
@@ -81,6 +82,19 @@ export class ListItem extends Component {
       this.props.updateItemAction(todoItems)
 
     }
+
+
+    addToCompletedTask = (itemKey) => {
+      const todoItems = this.props.todoItems;
+      todoItems.map((item)=>{
+        if(item.key == itemKey){
+          item.checked = !item.checked
+        }
+
+      });
+      this.props.completedTaskAction(todoItems)
+
+    }
     
     
     render() {
@@ -95,7 +109,7 @@ export class ListItem extends Component {
 }
 
 const mapStateToProps = (state) => {
-    // console.log("state at ListItem ",state);
+    console.log("state at ListItem ",state);
     const {items,currentItem} = state.todoReducer;
     // console.log("states - item Array",items);
 
@@ -110,7 +124,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return{
     deleteItemAction : (filterItems)=>dispatch(deleteItem(filterItems)),
-    updateItemAction : (updatedItems)=>dispatch(updateItem(updatedItems))
+    updateItemAction : (updatedItems)=>dispatch(updateItem(updatedItems)),
+    completedTaskAction : (completedItems)=>dispatch(completedTask(completedItems))
+
   }
 
 }
