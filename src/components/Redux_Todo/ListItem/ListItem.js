@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {} from  '../../../redux/actions/action'
+import { deleteItem,updateItem } from  '../../../redux/actions/action'
 import "../../../styles/Todo/list/ListItem.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -15,7 +15,8 @@ export class ListItem extends Component {
     }
 
     listItems = () =>{
-    // console.log(this.props.todoItems);
+    console.log("logging all props",this.props);
+    // console.log("logging all props",this.props.todoItems);
     const items = this.props.todoItems;
     const listItems = items.map((item)=>{
         return (
@@ -23,16 +24,17 @@ export class ListItem extends Component {
               <p>
                 <input
                   type="checkbox"
-                //   id={item.key}
+                  id={item.key}
       
-                //   defaultChecked={item.checked ? 'checked' : ''}
+                  // defaultChecked={item.checked ? 'checked' : ''}
                 />
       
                 <input
                   className="ListItem_Input"
                   type="text"
                   value={item.text}
-                //   id={item.key}
+                  id={item.key}
+                  onChange={(e)=>{this.updateItems(e.target.value,item.key)}}
                   
                 />
       
@@ -40,6 +42,7 @@ export class ListItem extends Component {
                   <FontAwesomeIcon
                     className="Delete_ListItem"
                     icon="trash"
+                    onClick={()=>this.deleteItems(item.key)}
                   />
                 </span>
               </p>
@@ -51,10 +54,33 @@ export class ListItem extends Component {
     return listItems;
 
         
+    } 
+
+
+
+    deleteItems = (itemKey) =>{
+        // alert(itemKey)
+        const listItems = this.props.todoItems;
+        // console.log("logging listItems- at delete function",listItems);
+        const filterItems = listItems.filter((item)=>item.key !== itemKey)
+        // console.log("filtered items - delete function",filterItems);
+        this.props.deleteItemAction(filterItems)
+
     }
-    
-    
-    
+
+    updateItems = (changedText,itemKey) => {
+      const todoItems = this.props.todoItems;
+      // console.log("before updation",todoItems);
+      todoItems.map((item)=>{
+        if(item.key == itemKey){
+          item.text = changedText
+        }
+      })
+      // console.log("after updation",todoItems);
+      
+      this.props.updateItemAction(todoItems)
+
+    }
     
     
     render() {
@@ -70,17 +96,22 @@ export class ListItem extends Component {
 
 const mapStateToProps = (state) => {
     // console.log("state at ListItem ",state);
-    const {items} = state.todoReducer;
-    console.log("states - item Array",items);
+    const {items,currentItem} = state.todoReducer;
+    // console.log("states - item Array",items);
 
     return {
 
-        todoItems : items
+        todoItems : items,
+        // todoCurrentItems : currentItem
+
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
-    
+  return{
+    deleteItemAction : (filterItems)=>dispatch(deleteItem(filterItems)),
+    updateItemAction : (updatedItems)=>dispatch(updateItem(updatedItems))
+  }
 
 }
 

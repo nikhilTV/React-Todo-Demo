@@ -23,7 +23,10 @@ export class Form extends Component {
 
   addItem = (e) => {
     e.preventDefault();
-    this.props.addItemAction(this.props.todoCurrentItem)
+    const newItems = this.props.todoCurrentItem;
+    if(newItems.text !== ""){
+      this.props.addItemAction(newItems)
+    }
 
   }
 

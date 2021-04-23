@@ -1,4 +1,4 @@
-import {HANDLE_INPUT, ADD_ITEM, DELETE_ITEM, UPDATE_ITEM} from './actionType'
+import {HANDLE_INPUT, ADD_ITEM, DELETE_ITEM, UPDATE_ITEM,COMPLETED_TASK} from './actionType'
 
 
 
@@ -27,21 +27,35 @@ export const addItem = (newItem) => {
     }
 }
 
-export const deleteItem = () => {
+export const deleteItem = (filterItems) => {
     return{
-        type: DELETE_ITEM
+        type: DELETE_ITEM,
+        payload:{
+            items:filterItems
+        }
     }
 }
-export const setUpdate = () => {
+export const updateItem = (updatedItems) => {
     return{
-        type: UPDATE_ITEM
+        type: UPDATE_ITEM,
+        payload:{
+            // items:[...updatedItems ] // to append each text or value to previous value
+            items:updatedItems
+        }
     }
 }
-// export const addToCompletedTask = () => {
-//     return{
-//         type: HANDLE_INPUT
-//     }
-// }
+
+
+export const addToCompletedTask = () => {
+    return{
+        type: COMPLETED_TASK,
+        payload:{
+            
+        }
+    }
+}
+
+
 // export const showTasks = () => {
 //     return{
 //         type: HANDLE_INPUT

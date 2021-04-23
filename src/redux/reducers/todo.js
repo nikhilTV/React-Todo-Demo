@@ -33,8 +33,8 @@ import {HANDLE_INPUT, ADD_ITEM, DELETE_ITEM, UPDATE_ITEM} from '../actions/actio
                 return{
                     ...state,
                     // items:items,
-                    items:[...state.items,item],
-                    currentItem:{
+                    items:[...state.items,item], //to append each item with previous item and return an array
+                     currentItem:{
                         // ...state.currentItem,
                         text:"",
                         key:"",
@@ -45,9 +45,20 @@ import {HANDLE_INPUT, ADD_ITEM, DELETE_ITEM, UPDATE_ITEM} from '../actions/actio
                 }
 
                 case DELETE_ITEM :
+                    const {items} = action.payload;
                     return{
                         ...state,
+                        items:items
 
+                    }
+
+                case UPDATE_ITEM :
+                    const updatedItems = action.payload.items;
+                    console.log("updated todo - at reducer",updatedItems);
+                    return{
+                        ...state,
+                        items:[...updatedItems] //to append each text or value to previous value
+                    
                     }
 
 
